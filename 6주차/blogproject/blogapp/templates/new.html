@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+
+{%block content%}
+
+    <h1>Write Your Blog</h1>
+    <form action="{%url 'create'%}" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        <!-- post method 일때 {%csrf_token%} 꼭 적어주기
+        제목: <input type="text" name="title"> <br>
+        작성자: <input type="text" name="writer"> <br>
+        사진: <input type="file" name="image"><br>
+        본문: <textarea name="body" id="" cols="30" rows="10"></textarea> <br> -->
+        {{form.as_p}}
+        <button type="submit">submit</button>
+    </form>
+
+{%endblock%}
+

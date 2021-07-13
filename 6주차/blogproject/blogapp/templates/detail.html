@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+
+{%block content%}
+
+    <h1>{{blog.title}}</h1>
+    작성자: {{blog.writer}}
+    날짜: {{blog.pub_date}}
+    <br>
+    {%if blog.image%}
+        <p> <img src="{{blog.image.url}}" alt=""></p>
+    {%endif%}
+    <p>{{blog.body}}</p>
+    <a href="{%url 'edit' blog.id%}">수정하기</a> 
+    <!--url.py의 edit으로 가기-->
+    <a href="{%url 'delete' blog.id%}">삭제하기</a> 
+    
+{%endblock%}

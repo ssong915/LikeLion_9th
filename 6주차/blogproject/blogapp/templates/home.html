@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+
+{%block content%}
+    {%if user.is_authenticated%}
+    안녕하세요 {{user.location}}에 사는 {{user.university}} {{user.nickname}}님
+    {%endif%}
+
+    <a href="?search=true&writer={{user.nickname}}">내가 쓴 글</a>
+    
+    <h1>Blog PROJECT</h1>
+    <div class="container">
+    {% for blog in blogs%}
+        <h3 style="color: blue;" >{{blog.title}}</h3>
+        {{blog.writer}}
+        <!--detail로 갈 수 있는 a 태그, 
+            detail로 갈때 "blog.id" 같이 보내주기 -->
+        {{blog.summary}} <a href="{%url 'detail' blog.id%}">...more></a>
+        <br>
+    {%endfor%}
+    </div>
+
+    {%if blogs.has_previous %} <!--이전글이 있냐-->
+    <a href="?page=1">처음</a>
+    <a href="?page={{blogs.previous_page_number}}">이전</a>
+    {%endif%}
+    <span>{{blogs.number}}</span>
+    <span>of</span>
+    <span>{{blogs.paginator.num_pages}}</span>
+    {%if blogs.has_next %}<!--다음글이 있냐-->
+    <a href="?page={{blogs.next_page_number}}">다음</a>
+    <a href="?page={{blogs.paginator.num_pages}}">마지막</a>
+    {%endif%} -->
+
+{%endblock%}

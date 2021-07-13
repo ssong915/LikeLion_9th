@@ -1,0 +1,13 @@
+<div style="text-align: center;">
+    <h1>wordcount result</h1>
+    <div>
+        {{fulltext}} <!--wordcount.html의 sentence-->        
+    </div>
+    <h3>당신이 입력한 텍스트는 {{count}}개의 단어로 구성되었다.</h3>
+    <div>
+        {% for word,totalCount in wordDict %}
+            {{word}} : {{totalCount}}
+            <br>
+        {%endfor%}
+    </div>
+</div>
